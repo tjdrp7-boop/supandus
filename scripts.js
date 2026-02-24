@@ -1,7 +1,7 @@
+// smooth scroll
 document.addEventListener("click", (e) => {
   const a = e.target.closest('a[href^="#"]');
   if (!a) return;
-
   const id = a.getAttribute("href");
   if (!id || id === "#") return;
 
@@ -12,8 +12,10 @@ document.addEventListener("click", (e) => {
   el.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
+// year
 document.getElementById("year").textContent = new Date().getFullYear();
 
+// Tally embed
 (function loadTally() {
   const iframes = document.querySelectorAll("iframe[data-tally-src]");
   if (!iframes.length) return;
