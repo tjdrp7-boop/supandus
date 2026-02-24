@@ -3,155 +3,135 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="브랜드 소개 및 매장 방문 예약 랜딩페이지" />
-    <title>브랜드 랜딩페이지</title>
+    <meta name="description" content="매장 방문 예약" />
+    <title>매장 방문 예약</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
 
   <body>
-    <header class="topbar" id="top">
-      <div class="container">
-        <div class="logo-box">로고</div>
+    <!-- TOP NAV (예시처럼: 좌 텍스트 / 중앙 로고 / 우 아이콘) -->
+    <header class="site-header">
+      <div class="nav-inner">
+        <a class="nav-left" href="#footer">고객 서비스</a>
+
+        <a class="nav-logo" href="#top" aria-label="홈">
+          <!-- 로고 이미지 쓰면 주석 해제 -->
+          <!-- <img src="./assets/logo.svg" alt="브랜드 로고" /> -->
+          <span class="logo-text">BRAND</span>
+        </a>
+
+        <div class="nav-right">
+          <button class="icon-btn" type="button" aria-label="검색">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M10.5 3a7.5 7.5 0 105.2 12.9l3.4 3.4 1.4-1.4-3.4-3.4A7.5 7.5 0 0010.5 3zm0 2a5.5 5.5 0 110 11 5.5 5.5 0 010-11z"/>
+            </svg>
+          </button>
+          <button class="icon-btn" type="button" aria-label="메뉴">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 7h16v2H4V7zm0 8h16v2H4v-2z"/>
+            </svg>
+          </button>
+        </div>
       </div>
+      <div class="hairline"></div>
     </header>
 
-    <main>
-      <section class="cta">
-        <div class="container">
-          <a class="btn" href="#reserve">매장 방문 예약</a>
-        </div>
-      </section>
-
-      <!-- ✅ 대표 이미지(직사각형) -->
+    <main id="top">
+      <!-- HERO: 가운데 정렬 텍스트 + 풀블리드 큰 이미지 -->
       <section class="hero">
-        <div class="container">
-          <div class="rect-media rect-media--hero">
-            <img
-              src="./assets/hero.jpg"
-              alt="대표 이미지"
-              loading="eager"
-              onerror="this.closest('.rect-media').classList.add('is-placeholder')"
-            />
-            <div class="placeholder-text">이미지</div>
-          </div>
+        <div class="hero-head">
+          <div class="pill">구찌 서비스</div>
+          <h1 class="hero-title">매장 방문 예약</h1>
+        </div>
+
+        <div class="hero-media">
+          <img
+            src="./assets/hero.jpg"
+            alt="히어로 이미지"
+            loading="eager"
+          />
+        </div>
+
+        <div class="hero-copy">
+          <p>
+            개인 스타일링부터 선물 추천과 맞춤형 옵션까지, 예약 진행 절차에 따라 고객의 니즈와 관심사에 맞춰 안내드립니다.
+          </p>
+          <p class="muted">
+            방문 일정은 예약 후 확인 가능하며, 도착 시 줄을 서지 않고 우선 입장할 수 있습니다.
+          </p>
+          <a class="cta-btn" href="#reserve">방문 예약하기</a>
         </div>
       </section>
 
-      <section class="tagline">
-        <div class="container">
-          <div class="chip">
-            <p>
-              브랜드 설명 3줄<br />
-              (핵심 USP 1)<br />
-              (핵심 USP 2 / 3)
-            </p>
-          </div>
+      <!-- TALLY FORM (중간에 삽입) -->
+      <section class="reserve" id="reserve">
+        <div class="reserve-inner">
+          <h2 class="section-title">예약 정보 입력</h2>
+          <p class="section-desc">아래 폼을 작성해주시면 확인 후 안내드리겠습니다.</p>
+
+          <!-- ✅ YOUR_TALLY_FORM_ID만 바꾸면 끝 -->
+          <iframe
+            class="tally-iframe"
+            data-tally-src="https://tally.so/r/YOUR_TALLY_FORM_ID"
+            loading="lazy"
+            title="매장 방문 예약 폼"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+          ></iframe>
         </div>
       </section>
 
-      <section class="tally" id="reserve">
-        <div class="container">
-          <div class="tally-card">
-            <div class="tally-title">탈리 폼</div>
-
-            <iframe
-              class="tally-iframe"
-              data-tally-src="https://tally.so/r/YOUR_TALLY_FORM_ID"
-              loading="lazy"
-              title="매장 방문 예약 폼"
-              frameborder="0"
-              marginheight="0"
-              marginwidth="0"
-            ></iframe>
-
-            <noscript>
-              <div class="noscript">폼이 보이지 않으면 자바스크립트를 활성화해 주세요.</div>
-            </noscript>
-          </div>
+      <!-- STORY: 예시처럼 좌/우 반반 (이미지/텍스트), 교차 배치 -->
+      <section class="split">
+        <div class="split-media">
+          <img src="./assets/story-1.jpg" alt="스토리 이미지 1" loading="lazy" />
+        </div>
+        <div class="split-text">
+          <h3 class="split-title">브랜드 스토리 1</h3>
+          <p>
+            특별한 경험은 ‘그저 완성된 것’이 아니라 시간이 지나며 더 깊어지는 가치로 남습니다.
+          </p>
+          <p class="muted">
+            (설명 2~3줄) 공간/제품/서비스의 철학을 짧게 요약해 주세요.
+          </p>
         </div>
       </section>
 
-      <section class="story-head">
-        <div class="container">
-          <div class="chip chip--center">로고 + 브랜드 스토리</div>
+      <section class="split split--reverse">
+        <div class="split-media">
+          <img src="./assets/story-2.jpg" alt="스토리 이미지 2" loading="lazy" />
+        </div>
+        <div class="split-text">
+          <h3 class="split-title">브랜드 스토리 2</h3>
+          <p>
+            (설명 1~2줄) 제작/큐레이션/운영 방식의 디테일을 강조해 주세요.
+          </p>
+          <p class="muted">
+            (설명 2~3줄) 고객이 얻는 결과/느낌/기억에 초점을 맞추면 예시 느낌이 더 살아납니다.
+          </p>
         </div>
       </section>
 
-      <section class="story">
-        <div class="container">
-          <!-- 스토리 1 -->
-          <div class="story-row">
-            <div class="rect-media rect-media--story">
-              <img
-                src="./assets/story-1.jpg"
-                alt="스토리 사진 1"
-                loading="lazy"
-                onerror="this.closest('.rect-media').classList.add('is-placeholder')"
-              />
-              <div class="placeholder-text">사진 1</div>
-            </div>
-
-            <div class="story-text">
-              <div class="chip chip--small">설명 1~3</div>
-              <ul>
-                <li>설명 1</li>
-                <li>설명 2</li>
-                <li>설명 3</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- 스토리 2 (반대 배치) -->
-          <div class="story-row reverse">
-            <div class="rect-media rect-media--story">
-              <img
-                src="./assets/story-2.jpg"
-                alt="스토리 사진 2"
-                loading="lazy"
-                onerror="this.closest('.rect-media').classList.add('is-placeholder')"
-              />
-              <div class="placeholder-text">사진 2</div>
-            </div>
-
-            <div class="story-text">
-              <div class="chip chip--small">설명 1~3</div>
-              <ul>
-                <li>설명 1</li>
-                <li>설명 2</li>
-                <li>설명 3</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- 스토리 3 -->
-          <div class="story-row">
-            <div class="rect-media rect-media--story">
-              <img
-                src="./assets/story-3.jpg"
-                alt="스토리 사진 3"
-                loading="lazy"
-                onerror="this.closest('.rect-media').classList.add('is-placeholder')"
-              />
-              <div class="placeholder-text">사진 3</div>
-            </div>
-
-            <div class="story-text">
-              <div class="chip chip--small">설명 1~3</div>
-              <ul>
-                <li>설명 1</li>
-                <li>설명 2</li>
-                <li>설명 3</li>
-              </ul>
-            </div>
-          </div>
+      <section class="split">
+        <div class="split-media">
+          <img src="./assets/story-3.jpg" alt="스토리 이미지 3" loading="lazy" />
+        </div>
+        <div class="split-text">
+          <h3 class="split-title">브랜드 스토리 3</h3>
+          <p>
+            (설명 1~2줄) 방문 전/후 안내, 추천 동선, 예약 혜택 등을 적어 주세요.
+          </p>
+          <a class="text-link" href="#reserve">예약하러 가기 →</a>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-bar">
-          브랜드 로고, 정보 및 개인정보 규정 등 · © <span id="year"></span>
+    <footer class="site-footer" id="footer">
+      <div class="hairline"></div>
+      <div class="footer-inner">
+        <div class="footer-box">
+          브랜드 로고 · 상호/주소/연락처 · 개인정보처리방침 · © <span id="year"></span>
         </div>
       </div>
     </footer>
