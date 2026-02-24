@@ -9,8 +9,10 @@
   --pad: 28px;
   --radius: 0px;
 
-  --serif: "Cormorant Garamond", "Times New Roman", serif;
-  --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", sans-serif;
+  /* ✅ Pretendard 통일 */
+  --font: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo",
+    "Malgun Gothic", sans-serif;
 
   --shadow-soft: 0 10px 30px rgba(0,0,0,.06);
 }
@@ -21,7 +23,7 @@ html{ scroll-behavior: smooth; }
 body{
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--sans);
+  font-family: var(--font);
   line-height: 1.6;
 }
 
@@ -32,7 +34,7 @@ img, video{
   width:100%;
   height:100%;
   display:block;
-  object-fit: cover; /* ✅ 직사각형 꽉 채우기 */
+  object-fit: cover;
 }
 
 a{ color: inherit; }
@@ -64,20 +66,31 @@ a{ color: inherit; }
   color: rgba(0,0,0,.78);
 }
 
+/* ✅ 로고 영역: 이미지 중심 정렬 */
 .nav-logo{
   justify-self: center;
   text-decoration:none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
 }
 
-.logo-text{
-  font-family: var(--serif);
-  font-weight: 700;
-  font-size: 24px;
-  letter-spacing: .28em;
+/* ✅ “사진 로고”용 (PNG/SVG 둘 다 OK) */
+.logo-img{
+  height: 22px;   /* 필요하면 18~28px 사이로 조절 */
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* fallback 텍스트(로고 없을 때만 표시) */
+.logo-text--fallback{
+  font-weight: 600;
+  letter-spacing: .18em;
   text-transform: uppercase;
+  font-size: 16px;
 }
-
-.logo-img{ height: 22px; width: auto; }
 
 .nav-right{
   justify-self: end;
@@ -168,11 +181,11 @@ a{ color: inherit; }
 
 .drawer-link{
   text-decoration:none;
-  font-family: var(--serif);
   font-size: 22px;
-  letter-spacing: .02em;
+  letter-spacing: -0.01em;
   padding: 8px 0;
   border-bottom: 1px solid rgba(0,0,0,.06);
+  font-weight: 600;
 }
 
 .drawer-foot{
@@ -209,10 +222,9 @@ a{ color: inherit; }
 
 .hero-title{
   margin: 0;
-  font-family: var(--serif);
   font-weight: 700;
   font-size: clamp(34px, 4.4vw, 60px);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 .hero-sub{
@@ -226,7 +238,7 @@ a{ color: inherit; }
 .hero-media{
   position: relative;
   width: 100%;
-  height: clamp(380px, 52vw, 640px); /* ✅ 예시처럼 큰 직사각형 */
+  height: clamp(380px, 52vw, 640px);
   overflow: hidden;
   background: #d9d9d9;
   border-radius: var(--radius);
@@ -338,10 +350,9 @@ a{ color: inherit; }
 
 .section-title{
   margin: 0;
-  font-family: var(--serif);
   font-weight: 700;
   font-size: clamp(22px, 2.4vw, 30px);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .section-desc{
@@ -412,7 +423,6 @@ a{ color: inherit; }
 
 .split-title{
   margin: 0;
-  font-family: var(--serif);
   font-weight: 700;
   font-size: clamp(22px, 2.6vw, 34px);
   letter-spacing: -0.02em;
@@ -453,7 +463,6 @@ a{ color: inherit; }
 }
 
 .step-num{
-  font-family: var(--serif);
   font-weight: 700;
   font-size: 20px;
   letter-spacing: .02em;
@@ -554,9 +563,8 @@ a{ color: inherit; }
 }
 
 .footer-logo{
-  font-family: var(--serif);
   font-weight: 700;
-  letter-spacing: .22em;
+  letter-spacing: .18em;
   text-transform: uppercase;
 }
 
@@ -567,10 +575,6 @@ a{ color: inherit; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 980px){
-  .nav-inner{
-    grid-template-columns: 1fr auto 1fr;
-  }
-
   .split{
     grid-template-columns: 1fr;
     min-height: auto;
@@ -594,6 +598,10 @@ a{ color: inherit; }
 
   .support-row{
     grid-template-columns: 1fr;
+  }
+
+  .logo-img{
+    height: 20px;
   }
 }
 
