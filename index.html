@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="브랜드 소개 및 매장 방문 예약 랜딩페이지" />
+    <title>브랜드 랜딩페이지</title>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <!-- 상단 로고 -->
+    <header class="topbar" id="top">
+      <div class="container">
+        <!-- 로고 이미지로 바꿀 거면 img 사용 -->
+        <!-- <img class="logo-img" src="./assets/logo.png" alt="브랜드 로고" /> -->
+        <div class="logo-box">로고</div>
+      </div>
+    </header>
+
+    <main>
+      <!-- 매장 방문 예약 CTA -->
+      <section class="cta">
+        <div class="container">
+          <a class="btn" href="#reserve">매장 방문 예약</a>
+        </div>
+      </section>
+
+      <!-- 히어로 이미지 -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero-media">
+            <!-- 너가 업로드한 대표 사진으로 교체 -->
+            <img
+              src="./assets/hero.jpg"
+              alt="대표 이미지"
+              loading="eager"
+              onerror="this.closest('.hero-media').classList.add('is-placeholder')"
+            />
+            <div class="placeholder-text">이미지</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 브랜드 설명 3줄 -->
+      <section class="tagline">
+        <div class="container">
+          <div class="chip">
+            <p>
+              브랜드 설명 3줄<br />
+              (여기에 한 줄씩 핵심 USP)<br />
+              (예: 공간/제품/경험 한 문장씩)
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 탈리 폼 -->
+      <section class="tally" id="reserve">
+        <div class="container">
+          <div class="tally-card">
+            <div class="tally-title">탈리 폼</div>
+
+            <!-- ✅ 아래 YOUR_TALLY_FORM_ID 를 네 Tally 링크로 교체 -->
+            <!-- 예: https://tally.so/r/abcd12 -->
+            <iframe
+              class="tally-iframe"
+              data-tally-src="https://tally.so/r/YOUR_TALLY_FORM_ID"
+              loading="lazy"
+              title="매장 방문 예약 폼"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+            ></iframe>
+
+            <noscript>
+              <div class="noscript">
+                폼이 보이지 않으면 자바스크립트를 활성화해 주세요.
+              </div>
+            </noscript>
+          </div>
+        </div>
+      </section>
+
+      <!-- 로고 + 브랜드 스토리 타이틀 -->
+      <section class="story-head">
+        <div class="container">
+          <div class="chip chip--center">로고 + 브랜드 스토리</div>
+        </div>
+      </section>
+
+      <!-- 스토리 1: 사진 왼쪽 / 설명 오른쪽 -->
+      <section class="story">
+        <div class="container">
+          <div class="story-row">
+            <div class="story-photo">
+              <img
+                src="./assets/story-1.jpg"
+                alt="스토리 사진 1"
+                loading="lazy"
+                onerror="this.closest('.story-photo').classList.add('is-placeholder')"
+              />
+              <div class="placeholder-text">사진 1</div>
+            </div>
+
+            <div class="story-text">
+              <div class="chip chip--small">설명 1~3</div>
+              <ul>
+                <li>설명 1: (핵심 한 문장)</li>
+                <li>설명 2: (차별점 / 경험)</li>
+                <li>설명 3: (방문 유도 문장)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 스토리 2: 설명 왼쪽 / 사진 오른쪽 -->
+          <div class="story-row reverse">
+            <div class="story-photo">
+              <img
+                src="./assets/story-2.jpg"
+                alt="스토리 사진 2"
+                loading="lazy"
+                onerror="this.closest('.story-photo').classList.add('is-placeholder')"
+              />
+              <div class="placeholder-text">사진 2</div>
+            </div>
+
+            <div class="story-text">
+              <div class="chip chip--small">설명 1~3</div>
+              <ul>
+                <li>설명 1: (프로세스 / 철학)</li>
+                <li>설명 2: (재료 / 디테일)</li>
+                <li>설명 3: (신뢰 요소)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 스토리 3: 사진 왼쪽 / 설명 오른쪽 -->
+          <div class="story-row">
+            <div class="story-photo">
+              <img
+                src="./assets/story-3.jpg"
+                alt="스토리 사진 3"
+                loading="lazy"
+                onerror="this.closest('.story-photo').classList.add('is-placeholder')"
+              />
+              <div class="placeholder-text">사진 3</div>
+            </div>
+
+            <div class="story-text">
+              <div class="chip chip--small">설명 1~3</div>
+              <ul>
+                <li>설명 1: (방문 시 혜택)</li>
+                <li>설명 2: (예약 방법)</li>
+                <li>설명 3: (마감/유의사항)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 하단 푸터 -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bar">
+          브랜드 로고, 정보 및 개인정보 규정 등 · © <span id="year"></span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./scripts.js"></script>
+  </body>
+</html>
