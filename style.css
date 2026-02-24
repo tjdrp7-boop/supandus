@@ -1,0 +1,293 @@
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --muted: #555555;
+  --card: #d9d9d9; /* 목업의 회색 박스 */
+  --max: 980px;
+
+  --gap-xl: 48px;
+  --gap-lg: 34px;
+  --gap-md: 22px;
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR",
+    Apple SD Gothic Neo, "Malgun Gothic", sans-serif;
+  line-height: 1.5;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.container {
+  width: min(var(--max), calc(100% - 48px));
+  margin: 0 auto;
+}
+
+/* 상단 로고 */
+.topbar {
+  padding: 18px 0 8px;
+}
+
+.logo-box {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  background: var(--card);
+  border-radius: var(--radius);
+  text-align: center;
+  padding: 18px 10px;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* CTA */
+.cta {
+  padding: 10px 0 18px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--card);
+  color: var(--text);
+  text-decoration: none;
+  border-radius: var(--radius);
+  padding: 14px 22px;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 auto;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06) inset;
+}
+
+.cta .container {
+  display: flex;
+  justify-content: center;
+}
+
+/* 히어로 */
+.hero {
+  padding: 6px 0 var(--gap-lg);
+}
+
+.hero-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.hero-media.is-placeholder img {
+  display: none;
+}
+
+/* 브랜드 설명 3줄 */
+.tagline {
+  padding-bottom: var(--gap-xl);
+}
+
+.chip {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.chip p {
+  margin: 0;
+  font-weight: 700;
+}
+
+.chip--center {
+  text-align: center;
+}
+
+.chip--small {
+  display: inline-block;
+  max-width: none;
+  padding: 10px 16px;
+  font-size: 18px;
+}
+
+/* 탈리 */
+.tally {
+  padding-bottom: var(--gap-xl);
+}
+
+.tally-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  overflow: hidden;
+}
+
+.tally-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 800;
+  margin: 6px 0 14px;
+}
+
+.tally-iframe {
+  width: 100%;
+  height: 720px; /* 필요 시 조절 */
+  border: 0;
+  border-radius: calc(var(--radius) - 2px);
+  background: #fff;
+}
+
+.noscript {
+  padding: 12px;
+  background: #fff;
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* 스토리 헤더 */
+.story-head {
+  padding: 0 0 var(--gap-lg);
+}
+
+/* 스토리 섹션 */
+.story {
+  padding-bottom: var(--gap-xl);
+}
+
+.story-row {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 26px;
+  align-items: center;
+  margin: 0 0 40px;
+}
+
+.story-row.reverse {
+  grid-template-columns: 1fr 1.6fr;
+}
+
+.story-row.reverse .story-photo {
+  order: 2;
+}
+.story-row.reverse .story-text {
+  order: 1;
+}
+
+.story-photo {
+  position: relative;
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.story-photo.is-placeholder img {
+  display: none;
+}
+
+.story-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.story-text ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.story-text li {
+  margin: 6px 0;
+  font-size: 16px;
+}
+
+/* 플레이스홀더 텍스트 (목업 느낌) */
+.placeholder-text {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 34px;
+  font-weight: 800;
+  color: #111;
+  pointer-events: none;
+}
+
+.story-photo .placeholder-text {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+/* 푸터 */
+.footer {
+  padding: 30px 0 40px;
+}
+
+.footer-bar {
+  background: var(--card);
+  border-radius: var(--radius);
+  text-align: center;
+  padding: 18px 16px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* 반응형 */
+@media (max-width: 860px) {
+  :root {
+    --gap-xl: 38px;
+    --gap-lg: 28px;
+  }
+
+  .logo-box {
+    font-size: 28px;
+  }
+
+  .hero-media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .story-row,
+  .story-row.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .story-row.reverse .story-photo,
+  .story-row.reverse .story-text {
+    order: initial;
+  }
+
+  .story-text {
+    align-items: center;
+    text-align: center;
+  }
+
+  .story-text ul {
+    text-align: left;
+    display: inline-block;
+  }
+}
