@@ -1,4 +1,3 @@
-// Smooth scroll
 document.addEventListener("click", (e) => {
   const a = e.target.closest('a[href^="#"]');
   if (!a) return;
@@ -13,20 +12,16 @@ document.addEventListener("click", (e) => {
   el.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
-// Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Tally embed loader (공식 위젯 스크립트 로드 + data-tally-src 적용)
 (function loadTally() {
   const iframes = document.querySelectorAll("iframe[data-tally-src]");
   if (!iframes.length) return;
 
-  // data-tally-src -> src로 세팅
   iframes.forEach((iframe) => {
     if (!iframe.src) iframe.src = iframe.dataset.tallySrc;
   });
 
-  // 위젯 스크립트 로드 (한 번만)
   const scriptId = "tally-widget";
   if (document.getElementById(scriptId)) return;
 
