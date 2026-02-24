@@ -7,12 +7,11 @@
     <meta name="theme-color" content="#f6f3ee" />
     <title>아크리니아 | 쇼룸 방문 예약</title>
 
-    <!-- Luxury: serif + clean sans (Google Fonts, 선택) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- ✅ Pretendard (Variable + dynamic subset) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css"
+      crossorigin
     />
 
     <link rel="stylesheet" href="./style.css" />
@@ -24,10 +23,17 @@
       <div class="nav-inner">
         <a class="nav-left" href="#support">고객 서비스</a>
 
+        <!-- ✅ 상단 로고: 이미지로 교체 -->
         <a class="nav-logo" href="#top" aria-label="아크리니아 홈">
-          <!-- 로고 이미지로 쓰려면 주석 해제 -->
-          <img class="logo-img" src="./assets/logo.svg" alt="아크리니아" /> 
-          <!-- <span class="logo-text">아크리니아</span> -->
+          <!-- 로고 파일을 /assets/logo.svg 로 넣어줘 (투명 PNG 추천) -->
+          <img
+            class="logo-img"
+            src="./assets/logo.svg"
+            alt="아크리니아"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"
+          />
+          <!-- 로고 이미지 없을 때 임시 텍스트 fallback -->
+          <span class="logo-text logo-text--fallback" style="display:none">아크리니아</span>
         </a>
 
         <div class="nav-right">
@@ -35,7 +41,13 @@
             <span class="icon-badge">예약</span>
           </a>
 
-          <button class="icon-btn" id="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false">
+          <button
+            class="icon-btn"
+            id="menuBtn"
+            type="button"
+            aria-label="메뉴 열기"
+            aria-expanded="false"
+          >
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M4 7h16v2H4V7zm0 8h16v2H4v-2z"></path>
             </svg>
@@ -87,7 +99,7 @@
           </p>
         </div>
 
-        <!-- ✅ HERO MEDIA: 영상 가능 (자동재생 시도), 실패하면 이미지로 -->
+        <!-- HERO MEDIA: 영상 가능 -->
         <div class="hero-media" id="heroMedia">
           <video
             class="hero-video"
@@ -96,17 +108,14 @@
             playsinline
             loop
             preload="metadata"
-            poster="./assets/hero.jpg"
+            poster="./assets/hero.png"
           >
-            <!-- 네가 영상 넣을 경우 파일명 그대로 업로드 -->
             <source src="./assets/hero.webm" type="video/webm" />
             <source src="./assets/hero.mp4" type="video/mp4" />
           </video>
 
-          <!-- 영상이 없어도 hero.jpg가 보이도록 이미지 레이어 유지 -->
-          <img class="hero-image" src="./assets/hero.png" alt="아크리니아 대표 이미지" loading="eager" />
+          <img class="hero-image" src="./assets/hero.jpg" alt="아크리니아 대표 이미지" loading="eager" />
 
-          <!-- 영상 컨트롤 (영상 재생 성공 시에만 노출) -->
           <button class="media-ctrl" id="mediaCtrl" type="button" aria-label="영상 일시정지">
             <span class="media-ctrl-dot" aria-hidden="true"></span>
             <span class="media-ctrl-text" id="mediaCtrlText" aria-hidden="true">PAUSE</span>
@@ -139,10 +148,9 @@
         </div>
 
         <div class="reserve-card">
-          <!-- ✅ YOUR_TALLY_FORM_ID만 바꾸면 끝 -->
           <iframe
             class="tally-iframe"
-            data-tally-src="https://tally.so/embed/kdyqJr?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            data-tally-src="https://tally.so/r/YOUR_TALLY_FORM_ID"
             loading="lazy"
             title="아크리니아 쇼룸 방문 예약 폼"
             frameborder="0"
@@ -156,7 +164,7 @@
         </div>
       </section>
 
-      <!-- STORY SPLITS (BERLUTI 스타일: 반반 + 큰 이미지 + 여백) -->
+      <!-- STORY SPLITS -->
       <section class="split-wrap" id="story">
         <div class="split">
           <div class="split-media">
@@ -170,7 +178,7 @@
               동선, 수납, 조리, 연출까지 <b>건축적 관점</b>에서 구성되어야 합니다.
             </p>
             <p class="muted">
-              (여기 텍스트는 네 브랜드 강점에 맞춰 2~4문장으로 짧게 유지하면 예시 느낌이 가장 잘 납니다.)
+              (여기 텍스트는 2~4문장으로 짧게 유지하면 레퍼런스 톤이 가장 잘 납니다.)
             </p>
             <a class="text-link" href="#process">프로세스 보기 →</a>
           </div>
@@ -265,7 +273,7 @@
         </div>
       </section>
 
-      <!-- GALLERY (선택: 너가 사진 넣으면 자연스럽게) -->
+      <!-- GALLERY -->
       <section class="gallery" id="gallery">
         <div class="section-head">
           <h2 class="section-title">갤러리</h2>
