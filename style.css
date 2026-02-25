@@ -125,79 +125,6 @@ a{ color: inherit; }
 }
 .icon-btn svg{ width: 20px; height: 20px; fill: var(--ink); opacity:.88; }
 
-/* ===== DRAWER ===== */
-.drawer{
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.22);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .18s ease;
-}
-
-.drawer.is-open{
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.drawer-inner{
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: min(420px, 92vw);
-  height: 100%;
-  background: var(--bg);
-  border-left: 1px solid var(--hair);
-  transform: translateX(10px);
-  transition: transform .18s ease;
-  padding: 18px 18px 24px;
-  display:flex;
-  flex-direction: column;
-}
-
-.drawer.is-open .drawer-inner{
-  transform: translateX(0);
-}
-
-.drawer-head{
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  padding-bottom: 12px;
-}
-
-.drawer-title{
-  font-size: 12px;
-  letter-spacing: .22em;
-  font-weight: 600;
-}
-
-.drawer-nav{
-  display:flex;
-  flex-direction: column;
-  padding: 10px 0 18px;
-  gap: 12px;
-}
-
-.drawer-link{
-  text-decoration:none;
-  font-size: 22px;
-  letter-spacing: -0.01em;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(0,0,0,.06);
-  font-weight: 600;
-}
-
-.drawer-foot{
-  margin-top: auto;
-  border-top: 1px solid rgba(0,0,0,.06);
-  padding-top: 14px;
-}
-.drawer-note{
-  color: var(--muted);
-  font-size: 13px;
-}
-
 /* ===== HERO ===== */
 .hero{
   padding: 56px 0 8px;
@@ -541,6 +468,40 @@ a{ color: inherit; }
 
 .support-value{
   font-size: 14px;
+}
+
+
+/* ===== BOTTOM MEDIA ===== */
+.bottom-media{
+  padding: 54px 0 74px;
+  border-top: 1px solid var(--hair);
+}
+
+.bottom-media-wrap{
+  max-width: var(--max);
+  margin: 18px auto 0;
+  padding: 0 var(--pad);
+}
+
+.bottom-media-link{
+  display:block;
+  text-decoration:none;
+}
+
+.bottom-media-img{
+  width: 100%;
+  height: auto !important;
+  object-fit: contain !important; /* 텍스트/안내 이미지 크롭 방지 */
+  display: block;
+  border: 1px solid rgba(0,0,0,.10);
+  background: #000;
+}
+
+.bottom-media-hint{
+  margin: 10px 0 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
 }
 
 /* ===== FOOTER ===== */
