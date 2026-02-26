@@ -81,6 +81,34 @@ a{ color: inherit; }
   align-items: center;
   justify-content: center;
 }
+/* ===== FORCE CENTER LOGO (확실한 해결책) ===== */
+.site-header{
+  display: flex;
+  justify-content: center;   /* 헤더 자체 중앙 */
+}
+
+/* nav-inner가 가운데 “틀” 역할 */
+.nav-inner{
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 14px var(--pad);
+
+  display: flex;
+  justify-content: center;   /* 로고 중앙 */
+  align-items: center;
+}
+
+/* 혹시 남아있는 좌/우 요소가 공간 차지하면 제거 */
+.nav-left,
+.nav-right{
+  display: none !important;
+}
+
+/* 로고 자체도 혹시 모를 상황 대비 */
+.nav-logo{
+  margin: 0 auto;
+}
 /* ✅ “사진 로고”용 (PNG/SVG 둘 다 OK) */
 .logo-img{
   height: 22px;   /* 필요하면 18~28px 사이로 조절 */
