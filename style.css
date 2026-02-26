@@ -65,29 +65,22 @@ a{ color: inherit; }
 }
 
 .nav-inner{
-  display: grid;
-  grid-template-columns: auto;
-  justify-content: center;
+  display: flex;              /* grid 제거 */
+  justify-content: center;    /* 가로 중앙 */
+  align-items: center;        /* 세로 중앙 */
+  padding: 14px 0;            /* 좌우 패딩 제거 (중앙 정확도↑) */
 }
 
 .nav-left{
-  justify-self: start;
-  text-decoration:none;
-  font-size: 13px;
-  letter-spacing: .02em;
-  color: rgba(0,0,0,.78);
+  display:none;
 }
 
 /* ✅ 로고 영역: 이미지 중심 정렬 */
 .nav-logo{
-  justify-self: center;
-  text-decoration:none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 44px;
 }
-
 /* ✅ “사진 로고”용 (PNG/SVG 둘 다 OK) */
 .logo-img{
   height: 22px;   /* 필요하면 18~28px 사이로 조절 */
