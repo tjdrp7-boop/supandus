@@ -64,7 +64,7 @@ a{ color: inherit; }
   backdrop-filter: blur(10px);
 }
 
-/* ✅ nav-inner만 중앙정렬: header를 flex로 만들면 hairline이 옆으로 가서 깨짐 */
+/* ✅ nav-inner만 중앙정렬 */
 .nav-inner{
   max-width: var(--max);
   margin: 0 auto;
@@ -223,59 +223,20 @@ a{ color: inherit; }
   border-radius: var(--radius);
 }
 
-.hero-video,
-.hero-image{
+/* ✅ 영상만 사용: 항상 보이게 */
+.hero-video{
   position:absolute;
   inset:0;
-}
-
-.hero-video{
-  opacity: 0;
-  transition: opacity .28s ease;
-}
-
-.hero-image{
+  width:100%;
+  height:100%;
   opacity: 1;
-  transition: opacity .28s ease;
+  transition: none;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
 
-/* 영상 재생 성공 시 */
-.hero-media.is-video .hero-video{ opacity: 1; }
-.hero-media.is-video .hero-image{ opacity: 0; }
-
-.media-ctrl{
-  position:absolute;
-  right: 16px;
-  top: 16px;
-  border: 1px solid rgba(255,255,255,.55);
-  background: rgba(0,0,0,.35);
-  color: #fff;
-  padding: 10px 12px;
-  display:flex;
-  align-items:center;
-  gap: 8px;
-  cursor:pointer;
-  opacity: 0;
-  pointer-events:none;
-}
-
-.hero-media.is-video .media-ctrl{
-  opacity: 1;
-  pointer-events:auto;
-}
-
-.media-ctrl-dot{
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
-  background: #fff;
-  display:inline-block;
-}
-.media-ctrl-text{
-  font-size: 11px;
-  letter-spacing: .16em;
-  font-weight: 600;
-}
+/* ✅ PAUSE 버튼 완전 제거(HTML에 남아있어도 안 보임) */
+.media-ctrl{ display:none !important; }
 
 .hero-copy{
   max-width: 860px;
@@ -593,8 +554,7 @@ a{ color: inherit; }
     background: #d9d9d9;
   }
 
-  .hero-video,
-  .hero-image{
+  .hero-video{
     object-fit: cover;
     object-position: 50% 50%;
   }
@@ -628,17 +588,13 @@ a{ color: inherit; }
   }
 }
 
-/* 접근성: 모션 최소화 설정이면 영상/트랜지션 최소 */
+/* 접근성: 모션 최소화 설정 */
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior: auto; }
-  .hero-video{ display:none; }
-  .hero-image{ opacity: 1 !important; }
-  .hero-media.is-video .media-ctrl{ display:none; }
+  .media-ctrl{ display:none !important; }
 }
-/* ===== BOTTOM PHOTO → FOOTER: BLACK GRADATION ===== */
 
-/* 하단 이미지 섹션 */
-/* ✅ 위(오프화이트) → 아래(검은 섹션) 자연스럽게 블렌딩 */
+/* ===== BOTTOM PHOTO → FOOTER: 자연스럽게 블렌딩 ===== */
 .bottom-media{
   position: relative;
   background: #000;
@@ -650,20 +606,19 @@ a{ color: inherit; }
   content:"";
   position:absolute;
   left:0; right:0; top:0;
-  height: 160px;              /* 120~220px 사이로 취향 조절 */
+  height: 160px;
   pointer-events:none;
   z-index: 2;
 
   background: linear-gradient(
     to bottom,
-    rgba(246,243,238,1) 0%,    /* = var(--bg) */
+    rgba(246,243,238,1) 0%,
     rgba(246,243,238,.70) 30%,
     rgba(246,243,238,.18) 60%,
     rgba(246,243,238,0) 100%
   );
 }
 
-/* 이미지(링크)가 오버레이 아래로 깔리게 */
 .bottom-media-wrap,
 .bottom-media-link,
 .bottom-media-img{
@@ -677,12 +632,11 @@ a{ color: inherit; }
   color: rgba(255,255,255,.78);
 }
 
-/* footer 상단 헤어라인도 흰색 톤으로 */
+/* footer 상단 헤어라인 */
 .site-footer .hairline{
   background: rgba(255,255,255,.14);
 }
 
-/* footer 텍스트 가독성 */
 .site-footer .footer-logo{
   color: rgba(255,255,255,.92);
 }
