@@ -20,23 +20,42 @@ document.addEventListener("click", (e) => {
   el.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
-// ===== Tally embed loader =====
+// ===== Tally embed loader (dynamicHeight 대응) =====
 (function loadTally() {
-  const iframes = document.querySelectorAll("iframe[data-tally-src]");
-  if (!iframes.length) return;
+  const widgetScriptSrc = "https://tally.so/widgets/embed.js";
 
-  iframes.forEach((iframe) => {
-    if (!iframe.src) iframe.src = iframe.dataset.tallySrc;
-  });
+  const hasEmbed = document.querySelector('iframe[data-tally-src]');
+  if (!hasEmbed) return;
 
-  const scriptId = "tally-widget";
-  if (document.getElementById(scriptId)) return;
+  const load = () => {
+    if (typeof Tally !== "undefined") {
+      Tally.loadEmbeds();
+      return;
+    }
 
-  const s = document.createElement("script");
-  s.id = scriptId;
-  s.src = "https://tally.so/widgets/embed.js";
-  s.async = true;
-  document.body.appendChild(s);
+    document
+      .querySelectorAll('iframe[data-tally-src]:not([src])')
+      .forEach((iframeEl) => {
+        iframeEl.src = iframeEl.dataset.tallySrc;
+      });
+  };
+
+  if (typeof Tally !== "undefined") {
+    load();
+    return;
+  }
+
+  if (document.querySelector(`script[src="${widgetScriptSrc}"]`) === null) {
+    const script = document.createElement("script");
+    script.src = widgetScriptSrc;
+    script.async = true;
+    script.onload = load;
+    script.onerror = load;
+    document.body.appendChild(script);
+    return;
+  }
+
+  load();
 })();
 
 // ===== HERO VIDEO: 자동재생 시도 + 성공하면 video 레이어 사용 =====
