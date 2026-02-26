@@ -627,6 +627,50 @@ a{ color: inherit; }
   .logo-img{
     height: 20px;
   }
+
+
+
+  /* ✅ 모바일에서 이미지가 잘리는 문제 해결:
+     - cover(크롭) → contain(전체 노출)
+     - 고정 height 박스는 aspect-ratio로 자연스러운 높이 확보
+  */
+  .hero-media{
+    height: auto;
+    aspect-ratio: 4 / 5; /* 필요하면 1/1 ~ 16/9로 조절 */
+    background: #d9d9d9;
+  }
+  .hero-video,
+  .hero-image{
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .split-media{
+    height: auto;           /* 기존 clamp 높이로 인한 크롭 방지 */
+    aspect-ratio: 4 / 3;    /* 스토리 사진 비율에 맞춰 조절 가능 */
+  }
+  .split-media img{
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: #ddd;
+  }
+
+  .grid-item{
+    height: auto;           /* 320px 고정 제거 */
+    aspect-ratio: 4 / 3;
+  }
+  .grid-item img{
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: #ddd;
+  }
+
+  .bottom-media-img{
+    height: auto;
+    object-fit: contain;
+  }
 }
 
 /* 접근성: 모션 최소화 설정이면 영상/트랜지션 최소 */
