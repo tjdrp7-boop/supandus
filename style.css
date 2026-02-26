@@ -628,23 +628,23 @@ a{ color: inherit; }
     height: 20px;
   }
 
-
-
-  /* ✅ 모바일에서 이미지가 잘리는 문제 해결:
-     - cover(크롭) → contain(전체 노출)
-     - 고정 height 박스는 aspect-ratio로 자연스러운 높이 확보
-  */
+  /* HERO 박스를 가로형으로: 레터박스(회색 빈 공간) 제거 */
   .hero-media{
     height: auto;
-    aspect-ratio: 4 / 5; /* 필요하면 1/1 ~ 16/9로 조절 */
+    aspect-ratio: 16 / 9;         /* 더 크게 보이게 하려면 3/2 추천 */
+    min-height: 260px;
+    max-height: 460px;
     background: #d9d9d9;
   }
+
+  /* HERO 이미지는 다시 cover로 꽉 채우기 */
   .hero-video,
   .hero-image{
-    object-fit: contain;
-    object-position: center;
+    object-fit: cover;            /* ✅ contain → cover */
+    object-position: 50% 50%;     /* 얼굴/포인트가 위에 있으면 50% 35% 등으로 조정 */
   }
 
+}
   .split-media{
     height: auto;           /* 기존 clamp 높이로 인한 크롭 방지 */
     aspect-ratio: 4 / 3;    /* 스토리 사진 비율에 맞춰 조절 가능 */
