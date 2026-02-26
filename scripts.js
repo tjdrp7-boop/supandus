@@ -60,22 +60,27 @@ document.addEventListener("click", (e) => {
 
 // ===== HERO VIDEO: 자동재생 시도 + 성공하면 video 레이어 사용 =====
 (function heroVideo() {
-  const media = $("#heroMedia");
-  const video = $("#heroVideo");
-  const ctrl = $("#mediaCtrl");
-  const ctrlText = $("#mediaCtrlText");
-
-  if (!media || !video) return;
+  const video = document.querySelector("#heroVideo");
+  if (!video) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduceMotion) return; // 모션 최소화면 영상 비활성
+  if (reduceMotion) {
+    // 모션 최소화 환경이면 자동재생을 강제하지 않음(접근성)
+    return;
+  }
 
-  const setCtrlState = (playing) => {
-    if (!ctrlText) return;
-    ctrlText.textContent = playing ? "PAUSE" : "PLAY";
-    if (ctrl) ctrl.setAttribute("aria-label", playing ? "영상 일시정지" : "영상 재생");
+  const tryPlay = async () => {
+    try {
+      video.muted = true;
+      video.playsInline = true;
+      await video.play();
+    } catch (e) {
+      // 자동재생 막히면 poster가 보임(문제 없음)
+    }
   };
 
+  tryPlay();
+})();
   const tryPlay = async () => {
     try {
       video.muted = true;
