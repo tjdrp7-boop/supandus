@@ -27,6 +27,20 @@ body{
   line-height: 1.6;
 }
 
+/* 3문단 카피 스타일 */
+.copy-lines{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;        /* 문단 사이 간격(14~24px 취향) */
+  max-width: 62ch;  /* 한 줄 길이 제한(가독성↑) */
+}
+
+.copy-lines p{
+  margin: 0;        /* 기본 p 여백 제거하고 gap으로 관리 */
+  line-height: 1.9; /* 다닥다닥 해결 핵심 */
+  letter-spacing: -0.01em;
+}
+
 /* 앵커 이동 시 sticky 헤더에 가려지지 않게 */
 section{ scroll-margin-top: 86px; }
 
@@ -221,18 +235,15 @@ a{ color: inherit; }
 }
 
 .hero-title{
-  margin: 0;
-  font-weight: 700;
-  font-size: clamp(34px, 4.4vw, 60px);
+  font-size: clamp(30px, 3.6vw, 52px);
   letter-spacing: -0.03em;
+  line-height: 1.08; /* 타이틀이 더 고급스럽게 */
 }
 
 .hero-sub{
-  margin: 10px auto 0;
-  max-width: 760px;
-  color: rgba(0,0,0,.72);
-  font-size: 14px;
-  letter-spacing: .02em;
+  font-size: clamp(13px, 1.4vw, 15px);
+  line-height: 1.8;  /* 다닥다닥 해결 */
+  max-width: 56ch;   /* 한 줄 길이 제한 → 가독성 상승 */
 }
 
 .hero-media{
@@ -376,7 +387,7 @@ a{ color: inherit; }
 
 .tally-iframe{
   width: 100%;
-  height: 1px;          /* ✅ 고정 높이 제거 (Tally dynamicHeight가 높이를 제어) */
+  height: 1px;          /* ✅ 고정 높이 제거 (dynamicHeight가 높이를 제어) */
   min-height: 640px;    /* ✅ 초기 로딩 시 최소 높이 */
   border: 1px solid var(--hair);
   background: transparent;
@@ -437,8 +448,12 @@ a{ color: inherit; }
   letter-spacing: .02em;
 }
 
-.split--reverse .split-media{ order: 2; }
-.split--reverse .split-text{ order: 1; }
+/* 데스크탑에서만 교차 배치(모바일에서 이미지/텍스트 순서 꼬임 방지) */
+@media (min-width: 981px){
+  .split--reverse .split-media{ order: 2; }
+  .split--reverse .split-text{ order: 1; }
+}
+
 
 /* ===== PROCESS ===== */
 .process{
@@ -582,8 +597,15 @@ a{ color: inherit; }
     min-height: auto;
   }
 
+  /* 모바일: Berluti 느낌으로 이미지 충분히 크게 + 일관된 순서 */
   .split-media{
-    height: 360px;
+    height: clamp(380px, 62vh, 560px);
+  }
+
+  /* reverse 섹션도 모바일에서는 DOM 순서대로(이미지 → 텍스트) */
+  .split--reverse .split-media,
+  .split--reverse .split-text{
+    order: 0;
   }
 
   .steps{
@@ -604,6 +626,50 @@ a{ color: inherit; }
 
   .logo-img{
     height: 20px;
+  }
+
+  /* HERO 박스를 가로형으로: 레터박스(회색 빈 공간) 제거 */
+  .hero-media{
+    height: auto;
+    aspect-ratio: 16 / 9;         /* 더 크게 보이게 하려면 3/2 추천 */
+    min-height: 260px;
+    max-height: 460px;
+    background: #d9d9d9;
+  }
+
+  /* HERO 이미지는 다시 cover로 꽉 채우기 */
+  .hero-video,
+  .hero-image{
+    object-fit: cover;            /* ✅ contain → cover */
+    object-position: 50% 50%;     /* 얼굴/포인트가 위에 있으면 50% 35% 등으로 조정 */
+  }
+
+}
+  .split-media{
+    height: auto;           /* 기존 clamp 높이로 인한 크롭 방지 */
+    aspect-ratio: 4 / 3;    /* 스토리 사진 비율에 맞춰 조절 가능 */
+  }
+  .split-media img{
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: #ddd;
+  }
+
+  .grid-item{
+    height: auto;           /* 320px 고정 제거 */
+    aspect-ratio: 4 / 3;
+  }
+  .grid-item img{
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: #ddd;
+  }
+
+  .bottom-media-img{
+    height: auto;
+    object-fit: contain;
   }
 }
 
