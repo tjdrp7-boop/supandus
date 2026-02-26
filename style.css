@@ -31,13 +31,13 @@ body{
 .copy-lines{
   display: flex;
   flex-direction: column;
-  gap: 18px;        /* 문단 사이 간격(14~24px 취향) */
-  max-width: 62ch;  /* 한 줄 길이 제한(가독성↑) */
+  gap: 18px;
+  max-width: 62ch;
 }
 
 .copy-lines p{
-  margin: 0;        /* 기본 p 여백 제거하고 gap으로 관리 */
-  line-height: 1.9; /* 다닥다닥 해결 핵심 */
+  margin: 0;
+  line-height: 1.9;
   letter-spacing: -0.01em;
 }
 
@@ -64,99 +64,46 @@ a{ color: inherit; }
   backdrop-filter: blur(10px);
 }
 
+/* ✅ nav-inner만 중앙정렬: header를 flex로 만들면 hairline이 옆으로 가서 깨짐 */
 .nav-inner{
-  display: flex;              /* grid 제거 */
-  justify-content: center;    /* 가로 중앙 */
-  align-items: center;        /* 세로 중앙 */
-  padding: 14px 0;            /* 좌우 패딩 제거 (중앙 정확도↑) */
-}
-
-.nav-left{
-  display:none;
-}
-
-/* ✅ 로고 영역: 이미지 중심 정렬 */
-.nav-logo{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-/* ===== FORCE CENTER LOGO (확실한 해결책) ===== */
-.site-header{
-  display: flex;
-  justify-content: center;   /* 헤더 자체 중앙 */
-}
-
-/* nav-inner가 가운데 “틀” 역할 */
-.nav-inner{
-  width: 100%;
   max-width: var(--max);
   margin: 0 auto;
   padding: 14px var(--pad);
-
-  display: flex;
-  justify-content: center;   /* 로고 중앙 */
-  align-items: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-/* 혹시 남아있는 좌/우 요소가 공간 차지하면 제거 */
+/* 좌/우 요소는 숨김(HTML에 남아있어도 영향 X) */
 .nav-left,
 .nav-right{
-  display: none !important;
+  display:none !important;
 }
 
-/* 로고 자체도 혹시 모를 상황 대비 */
+/* 로고 */
 .nav-logo{
-  margin: 0 auto;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height: 44px;
 }
-/* ✅ “사진 로고”용 (PNG/SVG 둘 다 OK) */
+
+/* 로고 이미지 */
 .logo-img{
-  height: 22px;   /* 필요하면 18~28px 사이로 조절 */
+  height: 22px;
   width: auto;
   object-fit: contain;
   display: block;
 }
 
-/* fallback 텍스트(로고 없을 때만 표시) */
+/* fallback 텍스트 */
 .logo-text--fallback{
   font-weight: 600;
   letter-spacing: .18em;
   text-transform: uppercase;
   font-size: 16px;
 }
-
-.nav-right{
-  justify-self: end;
-  display:flex;
-  align-items:center;
-  gap: 10px;
-}
-
-.icon-link{
-  text-decoration:none;
-  display:inline-flex;
-  align-items:center;
-  height: 36px;
-}
-
-.icon-badge{
-  font-size: 12px;
-  letter-spacing: .06em;
-  padding: 8px 10px;
-  border: 1px solid var(--hair);
-  background: rgba(255,255,255,.28);
-}
-
-.icon-btn{
-  width: 40px;
-  height: 40px;
-  border: 0;
-  background: transparent;
-  display:grid;
-  place-items:center;
-  cursor:pointer;
-}
-.icon-btn svg{ width: 20px; height: 20px; fill: var(--ink); opacity:.88; }
 
 /* ===== DRAWER ===== */
 .drawer{
@@ -256,15 +203,15 @@ a{ color: inherit; }
 .hero-title{
   font-size: clamp(30px, 3.6vw, 52px);
   letter-spacing: -0.03em;
-  line-height: 1.08; /* 타이틀이 더 고급스럽게 */
+  line-height: 1.08;
 }
 
 .hero-sub{
   font-size: clamp(13px, 1.4vw, 15px);
   line-height: 1.8;
   max-width: 56ch;
-  margin: 16px auto 0;   /* 👈 이게 핵심 */
-  text-align: center;    /* 👈 명확하게 한번 더 선언 */
+  margin: 16px auto 0;
+  text-align: center;
 }
 
 .hero-media{
@@ -408,8 +355,8 @@ a{ color: inherit; }
 
 .tally-iframe{
   width: 100%;
-  height: 1px;          /* ✅ 고정 높이 제거 (dynamicHeight가 높이를 제어) */
-  min-height: 640px;    /* ✅ 초기 로딩 시 최소 높이 */
+  height: 1px;
+  min-height: 640px;
   border: 1px solid var(--hair);
   background: transparent;
   display: block;
@@ -469,12 +416,10 @@ a{ color: inherit; }
   letter-spacing: .02em;
 }
 
-/* 데스크탑에서만 교차 배치(모바일에서 이미지/텍스트 순서 꼬임 방지) */
 @media (min-width: 981px){
   .split--reverse .split-media{ order: 2; }
   .split--reverse .split-text{ order: 1; }
 }
-
 
 /* ===== PROCESS ===== */
 .process{
@@ -611,19 +556,13 @@ a{ color: inherit; }
   font-size: 13px;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE (FIXED BRACES) ===== */
 @media (max-width: 980px){
   .split{
     grid-template-columns: 1fr;
     min-height: auto;
   }
 
-  /* 모바일: Berluti 느낌으로 이미지 충분히 크게 + 일관된 순서 */
-  .split-media{
-    height: clamp(380px, 62vh, 560px);
-  }
-
-  /* reverse 섹션도 모바일에서는 DOM 순서대로(이미지 → 텍스트) */
   .split--reverse .split-media,
   .split--reverse .split-text{
     order: 0;
@@ -637,10 +576,6 @@ a{ color: inherit; }
     grid-template-columns: 1fr;
   }
 
-  .grid-item{
-    height: 320px;
-  }
-
   .support-row{
     grid-template-columns: 1fr;
   }
@@ -649,26 +584,25 @@ a{ color: inherit; }
     height: 20px;
   }
 
-  /* HERO 박스를 가로형으로: 레터박스(회색 빈 공간) 제거 */
+  /* HERO 박스 */
   .hero-media{
     height: auto;
-    aspect-ratio: 16 / 9;         /* 더 크게 보이게 하려면 3/2 추천 */
+    aspect-ratio: 16 / 9;
     min-height: 260px;
     max-height: 460px;
     background: #d9d9d9;
   }
 
-  /* HERO 이미지는 다시 cover로 꽉 채우기 */
   .hero-video,
   .hero-image{
-    object-fit: cover;            /* ✅ contain → cover */
-    object-position: 50% 50%;     /* 얼굴/포인트가 위에 있으면 50% 35% 등으로 조정 */
+    object-fit: cover;
+    object-position: 50% 50%;
   }
 
-}
+  /* ✅ 모바일: 스토리/갤러리 크롭 방지 */
   .split-media{
-    height: auto;           /* 기존 clamp 높이로 인한 크롭 방지 */
-    aspect-ratio: 4 / 3;    /* 스토리 사진 비율에 맞춰 조절 가능 */
+    height: auto;
+    aspect-ratio: 4 / 3;
   }
   .split-media img{
     height: 100%;
@@ -678,7 +612,7 @@ a{ color: inherit; }
   }
 
   .grid-item{
-    height: auto;           /* 320px 고정 제거 */
+    height: auto;
     aspect-ratio: 4 / 3;
   }
   .grid-item img{
