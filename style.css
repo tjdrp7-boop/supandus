@@ -375,10 +375,12 @@ a{ color: inherit; }
 }
 
 .tally-iframe{
-  width:100%;
-  height: 600px;
-  border: 0px solid var(--hair);
-  background: #fff;
+  width: 100%;
+  height: 1px;          /* ✅ 고정 높이 제거 (dynamicHeight가 높이를 제어) */
+  min-height: 640px;    /* ✅ 초기 로딩 시 최소 높이 */
+  border: 1px solid var(--hair);
+  background: transparent;
+  display: block;
 }
 
 .reserve-note{
