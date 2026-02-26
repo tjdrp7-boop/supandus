@@ -27,6 +27,20 @@ body{
   line-height: 1.6;
 }
 
+/* 3문단 카피 스타일 */
+.copy-lines{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;        /* 문단 사이 간격(14~24px 취향) */
+  max-width: 62ch;  /* 한 줄 길이 제한(가독성↑) */
+}
+
+.copy-lines p{
+  margin: 0;        /* 기본 p 여백 제거하고 gap으로 관리 */
+  line-height: 1.9; /* 다닥다닥 해결 핵심 */
+  letter-spacing: -0.01em;
+}
+
 /* 앵커 이동 시 sticky 헤더에 가려지지 않게 */
 section{ scroll-margin-top: 86px; }
 
