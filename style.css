@@ -635,3 +635,46 @@ a{ color: inherit; }
   .hero-image{ opacity: 1 !important; }
   .hero-media.is-video .media-ctrl{ display:none; }
 }
+/* ===== BOTTOM PHOTO → FOOTER: BLACK GRADATION ===== */
+
+/* 하단 이미지 섹션 */
+.bottom-media{
+  position: relative;
+  background: #000;      /* 이미지 바깥 여백 생겨도 검정으로 */
+  overflow: hidden;
+}
+
+/* 이미지 위에 그라데이션 오버레이 */
+.bottom-media::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  /* 위는 거의 투명 → 아래로 갈수록 진하게 */
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,.65) 82%,
+    rgba(0,0,0,.92) 100%
+  );
+}
+
+/* footer를 진한 블랙으로 */
+.site-footer{
+  background: #000;
+  color: rgba(255,255,255,.78);
+}
+
+/* footer 상단 헤어라인도 흰색 톤으로 */
+.site-footer .hairline{
+  background: rgba(255,255,255,.14);
+}
+
+/* footer 텍스트 가독성 */
+.site-footer .footer-logo{
+  color: rgba(255,255,255,.92);
+}
+.site-footer .footer-meta{
+  color: rgba(255,255,255,.62);
+}
