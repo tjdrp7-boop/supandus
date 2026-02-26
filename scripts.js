@@ -110,5 +110,3 @@ document.addEventListener("click", (e) => {
 
   tryPlay();
 })();
-
-///////안녕하세요
