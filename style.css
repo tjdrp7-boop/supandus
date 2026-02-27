@@ -304,7 +304,7 @@ a{ color: inherit; }
 
 /* ===== RESERVE ===== */
 .reserve{
-  padding: 36px 0 74px;
+  padding: 36px 0 48px;
   border-top: 1px solid var(--hair);
 }
 
@@ -317,7 +317,7 @@ a{ color: inherit; }
 .tally-iframe{
   width: 100%;
   height: 1px;
-  min-height: 1000px;
+  min-height: 640px;
   border: 1px solid var(--hair);
   background: transparent;
   display: block;
@@ -519,6 +519,9 @@ a{ color: inherit; }
 
 /* ===== RESPONSIVE (FIXED BRACES) ===== */
 @media (max-width: 980px){
+  /* Tally iframe: keep only as fallback; dynamicHeight will size it */
+  .tally-iframe{ min-height: 780px; }
+
   .split{
     grid-template-columns: 1fr;
     min-height: auto;
@@ -596,46 +599,45 @@ a{ color: inherit; }
   .media-ctrl{ display:none !important; }
 }
 
-/* ===== LOCATION (image) + FOOTER black finish ===== */
+/* ===== LOCATION (image) ===== */
 .location-section{
-  position: relative;
-  /* 위는 기존 배경에서 시작해 자연스럽게 블랙으로 전환 */
-  background: linear-gradient(
-    to bottom,
-    var(--bg) 0%,
-    #0b0b0b 220px,
-    #0b0b0b 100%
-  );
-  padding: 64px 0 88px;
+  background: var(--bg);          /* ✅ 페이지 기본 배경과 동일 */
+  padding: 56px 0 72px;
   text-align: center;
+  border-top: 1px solid var(--hair);
 }
 
+/* 제목/설명은 기본 텍스트 컬러를 사용 */
 .location-section .section-title{
-  color: rgba(255,255,255,.92);
+  color: var(--ink);
 }
 
 .location-section .section-desc{
-  color: rgba(255,255,255,.65);
+  color: var(--muted);
 }
 
 .location-image-wrap{
   max-width: 1000px;
-  margin: 36px auto 0;
+  margin: 28px auto 0;
   padding: 0 var(--pad);
 }
 
+/* 블랙 이미지가 ‘툭’ 뜨지 않게, 아주 얇은 테두리만 */
 .location-image{
   width: 100%;
   height: auto;
   display: block;
-  object-fit: contain;
+  border: 1px solid rgba(0,0,0,.10);
+  background: #000;
 }
 
+/* 주소/전화 라인 */
 .location-meta-inline{
+
   max-width: var(--max);
   margin: 18px auto 0;
   padding: 0 var(--pad);
-  color: rgba(255,255,255,.70);
+  color: rgba(0,0,0,.68);
   font-size: 13px;
   line-height: 1.9;
 }
