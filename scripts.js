@@ -20,54 +20,56 @@ document.addEventListener("click", (e) => {
   el.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
-// ===== Tally embed loader (dynamicHeight 대응) =====
+// ===== Tally embed loader (dynamicHeight) =====
 (function loadTally() {
-  const widgetScriptSrc = "https://tally.so/widgets/embed.js";
-
   const hasEmbed = document.querySelector('iframe[data-tally-src]');
   if (!hasEmbed) return;
 
-  const load = () => {
-    if (typeof Tally !== "undefined") {
-      Tally.loadEmbeds();
-      return;
-    }
+  const widgetScriptSrc = "https://tally.so/widgets/embed.js";
 
+  const run = () => {
+    // data-tally-src -> src 주입 (src가 없을 때만)
     document
       .querySelectorAll('iframe[data-tally-src]:not([src])')
       .forEach((iframeEl) => {
         iframeEl.src = iframeEl.dataset.tallySrc;
       });
+
+    // 위젯이 있으면 dynamicHeight 적용
+    if (typeof Tally !== "undefined" && typeof Tally.loadEmbeds === "function") {
+      Tally.loadEmbeds();
+    }
   };
 
+  // 이미 로드되어 있으면 실행
   if (typeof Tally !== "undefined") {
-    load();
+    run();
     return;
   }
 
-  if (document.querySelector(`script[src="${widgetScriptSrc}"]`) === null) {
-    const script = document.createElement("script");
-    script.src = widgetScriptSrc;
-    script.async = true;
-    script.onload = load;
-    script.onerror = load;
-    document.body.appendChild(script);
+  // 스크립트 중복 로드 방지
+  const existing = document.querySelector(`script[src="${widgetScriptSrc}"]`);
+  if (existing) {
+    // 로드 완료 전일 수 있으니 약간 기다렸다가 실행
+    setTimeout(run, 0);
     return;
   }
 
-  load();
+  const script = document.createElement("script");
+  script.src = widgetScriptSrc;
+  script.async = true;
+  script.onload = run;
+  script.onerror = run;
+  document.body.appendChild(script);
 })();
 
-// ===== HERO VIDEO: 자동재생 시도 + 성공하면 video 레이어 사용 =====
+// ===== HERO VIDEO: autoplay 시도 =====
 (function heroVideo() {
   const video = document.querySelector("#heroVideo");
   if (!video) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduceMotion) {
-    // 모션 최소화 환경이면 자동재생을 강제하지 않음(접근성)
-    return;
-  }
+  if (reduceMotion) return;
 
   const tryPlay = async () => {
     try {
@@ -75,63 +77,9 @@ document.addEventListener("click", (e) => {
       video.playsInline = true;
       await video.play();
     } catch (e) {
-      // 자동재생 막히면 poster가 보임(문제 없음)
+      // autoplay가 막히면 poster/첫 프레임이 보임(문제 없음)
     }
   };
 
   tryPlay();
 })();
-  const tryPlay = async () => {
-    try {
-      video.muted = true;
-      video.playsInline = true;
-
-      await video.play();
-      media.classList.add("is-video");
-      if (ctrl) ctrl.style.display = "flex";
-      setCtrlState(true);
-    } catch (err) {
-      if (ctrl) ctrl.style.display = "none";
-    }
-  };
-
-  // 뷰포트 밖이면 pause (퍼포먼스)
-  const io = new IntersectionObserver(
-    (entries) => {
-      const ent = entries[0];
-      if (!ent) return;
-
-      if (!ent.isIntersecting) {
-        if (!video.paused) {
-          video.pause();
-          setCtrlState(false);
-        }
-      } else {
-        if (media.classList.contains("is-video") && video.paused) {
-          video.play().then(() => setCtrlState(true)).catch(() => {});
-        }
-      }
-    },
-    { threshold: 0.25 }
-  );
-  io.observe(media);
-
-  // 컨트롤 토글
-  if (ctrl) {
-    ctrl.addEventListener("click", async () => {
-      if (video.paused) {
-        try {
-          await video.play();
-          media.classList.add("is-video");
-          setCtrlState(true);
-        } catch (e) {}
-      } else {
-        video.pause();
-        setCtrlState(false);
-      }
-    });
-  }
-
-  tryPlay();
-})();
-
