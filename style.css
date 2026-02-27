@@ -312,12 +312,13 @@ a{ color: inherit; }
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 var(--pad);
+  overflow: visible;
 }
 
 .tally-iframe{
   width: 100%;
-  height: auto !important;     /* ✅ 자동 높이 */
-  min-height: 0 !important;    /* ✅ 최소 높이 제거 */
+  height: 1px;           /* ✅ Tally dynamicHeight가 inline height로 실제 높이를 세팅 */
+  min-height: 200px;     /* ✅ 로딩 중 최소 표시(빈 여백 과다 방지) */
   border: 1px solid var(--hair);
   background: transparent;
   display: block;
@@ -520,9 +521,7 @@ a{ color: inherit; }
 /* ===== RESPONSIVE (FIXED BRACES) ===== */
 @media (max-width: 980px){
   /* Tally iframe: keep only as fallback; dynamicHeight will size it */
-  .tally-iframe{ min-height: 780px; }
-
-  .split{
+    .split{
     grid-template-columns: 1fr;
     min-height: auto;
   }
@@ -584,12 +583,6 @@ a{ color: inherit; }
     object-position: center;
     background: #ddd;
   }
-
-
-  /* ✅ 모바일: Tally 폼 잘림 방지 */
- .tally-iframe{
-  min-height: 0 !important;
-}
 }
 
 /* 접근성: 모션 최소화 설정 */
