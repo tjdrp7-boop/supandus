@@ -680,3 +680,50 @@ a{ color: inherit; }
     height: 420px;
   }
 }
+/* ===== Location Section ===== */
+.map-section{
+  padding: 64px 0 80px;
+}
+
+.location-card{
+  max-width: var(--max);
+  margin: 24px auto 0;
+  padding: 40px var(--pad);
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,.12);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+
+.location-address{
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.location-phone{
+  margin-top: 8px;
+  font-size: 14px;
+  color: rgba(255,255,255,.7);
+}
+
+.location-meta{
+  margin-top: 16px;
+  font-size: 13px;
+  color: rgba(255,255,255,.6);
+  line-height: 1.8;
+}
+
+.location-btn{
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 20px;
+  border: 1px solid rgba(255,255,255,.35);
+  color: rgba(255,255,255,.9);
+  text-decoration: none;
+  letter-spacing: .02em;
+  transition: all .25s ease;
+}
+
+.location-btn:hover{
+  background: rgba(255,255,255,.08);
+}
