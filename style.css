@@ -304,7 +304,7 @@ a{ color: inherit; }
 
 /* ===== RESERVE ===== */
 .reserve{
-  padding: 36px 0 48px;
+  padding: 36px 0 32px;
   border-top: 1px solid var(--hair);
 }
 
@@ -316,8 +316,8 @@ a{ color: inherit; }
 
 .tally-iframe{
   width: 100%;
-  height: 1px;
-  min-height: 640px;
+  height: auto !important;     /* ✅ 자동 높이 */
+  min-height: 0 !important;    /* ✅ 최소 높이 제거 */
   border: 1px solid var(--hair);
   background: transparent;
   display: block;
@@ -587,10 +587,9 @@ a{ color: inherit; }
 
 
   /* ✅ 모바일: Tally 폼 잘림 방지 */
-  .tally-iframe{
-    min-height: 1200px;
-  }
-
+ .tally-iframe{
+  min-height: 0 !important;
+}
 }
 
 /* 접근성: 모션 최소화 설정 */
