@@ -648,20 +648,37 @@ a{ color: inherit; }
     margin-top: 28px;
   }
 }
-
-/* footer를 진한 블랙으로 */
+/* ===== Footer (match page background) ===== */
 .site-footer{
-  background: #0b0b0b;
-  color: rgba(255,255,255,.78);
+  background: var(--bg);
+  color: var(--ink);
 }
 
 .site-footer .hairline{
-  background: rgba(255,255,255,.14);
+  background: var(--hair);
 }
 
-.site-footer .footer-logo{
-  color: rgba(255,255,255,.92);
-}
 .site-footer .footer-meta{
-  color: rgba(255,255,255,.62);
+  color: var(--muted);
+}
+
+/* footer logo image */
+.footer-logo{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.footer-logo-img{
+  height: 22px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.footer-logo-text{
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
 }
