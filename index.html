@@ -278,13 +278,33 @@ Modus Doors System은 수평 오픈 도어로 숨겨진 주방을 설계하고, 
             <span class="footer-logo-text" style="display:none">아크리니아</span>
           </div>
           <div class="footer-meta">
-            브랜드 정보 · 사업자정보 · 개인정보처리방침 · 이용약관 · © <span id="year"></span>
-          </div>
+  <button type="button" class="footer-link" data-modal="brand">브랜드 정보</button>
+  <span class="sep">·</span>
+  <button type="button" class="footer-link" data-modal="business">사업자정보</button>
+  <span class="sep">·</span>
+  <button type="button" class="footer-link" data-modal="privacy">개인정보처리방침</button>
+  <span class="sep">·</span>
+  <button type="button" class="footer-link" data-modal="terms">이용약관</button>
+  <span class="sep">·</span>
+  © <span id="year"></span>
+</div>
         </div>
       </div>
     </footer>
 
     <script src="./scripts.js"></script>
   <script async src="https://tally.so/widgets/embed.js"></script>
+    <!-- POLICY MODAL -->
+<div class="policy-modal" id="policyModal" aria-hidden="true">
+  <div class="policy-modal__backdrop" data-modal-close></div>
+
+  <div class="policy-modal__panel" role="dialog" aria-modal="true" aria-labelledby="policyModalTitle">
+    <div class="policy-modal__head">
+      <h3 id="policyModalTitle" class="policy-modal__title"></h3>
+      <button type="button" class="policy-modal__close" data-modal-close aria-label="닫기">✕</button>
+    </div>
+    <div id="policyModalBody" class="policy-modal__body"></div>
+  </div>
+</div>
   </body>
 </html>
