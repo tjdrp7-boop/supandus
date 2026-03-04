@@ -268,23 +268,40 @@ Modus Doors System은 수평 오픈 도어로 숨겨진 주방을 설계하고, 
       <div class="hairline"></div>
       <div class="footer-inner">
         <div class="footer-brand">
-          <div class="footer-logo">
-            <img
-              class="footer-logo-img"
-              src="./assets/logo.svg"
-              alt="아크리니아"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"
-            />
-            <span class="footer-logo-text" style="display:none">아크리니아</span>
-          </div>
+          <div class="footer-logo">아크리니아</div>
           <div class="footer-meta">
-            브랜드 정보 · 사업자정보 · 개인정보처리방침 · 이용약관 · © <span id="year"></span>
+
+            <button type="button" class="footer-link" data-modal="brand">브랜드 정보</button>
+            <span class="footer-sep">·</span>
+            <button type="button" class="footer-link" data-modal="business">사업자정보</button>
+            <span class="footer-sep">·</span>
+            <button type="button" class="footer-link" data-modal="privacy">개인정보처리방침</button>
+            <span class="footer-sep">·</span>
+            <button type="button" class="footer-link" data-modal="terms">이용약관</button>
+            <span class="footer-sep">·</span>
+            © <span id="year"></span>
           </div>
         </div>
       </div>
     </footer>
 
+    
+    <!-- POLICY MODAL -->
+    <div class="modal" id="policyModal" aria-hidden="true">
+      <div class="modal-backdrop" data-modal-close></div>
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="policyModalTitle">
+        <div class="modal-head">
+          <h3 class="modal-title" id="policyModalTitle"> </h3>
+          <button class="modal-close" type="button" data-modal-close aria-label="닫기">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3 1.4 1.4z"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body" id="policyModalBody"></div>
+      </div>
+    </div>
+
     <script src="./scripts.js"></script>
-  <script async src="https://tally.so/widgets/embed.js"></script>
   </body>
 </html>
