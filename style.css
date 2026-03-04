@@ -759,3 +759,52 @@ a{ color: inherit; }
     margin: 6vh auto;
   }
 }
+/* ===== Footer clickable info links ===== */
+.footer-meta-links{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.footer-meta-link{
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+.footer-meta-link:hover{
+  text-decoration: underline;
+}
+
+.footer-meta-link:focus-visible{
+  outline: 1px solid rgba(0,0,0,.35);
+  outline-offset: 4px;
+}
+
+.footer-sep{
+  color: rgba(0,0,0,.38);
+}
+
+/* modal 안 리스트/링크 가독성 보정 */
+.modal-body ol{
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.modal-body a{
+  color: inherit;
+  text-decoration: underline;
+}
+
+@media (max-width: 980px){
+  .footer-meta-links{
+    gap: 4px 8px;
+  }
+}
